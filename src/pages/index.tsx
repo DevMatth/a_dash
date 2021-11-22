@@ -12,7 +12,7 @@ type SignInForm = {
 const signInFormSchema = yup.object().shape({
   email: yup.string().required("Insira um email válido").email("Email inválido"),
   password: yup.string().required("Senha obrigatória").min(8, 'Mínimo de 8 caracteres'),  // ---- só aceitando exatamente 8 caracteres
-})
+});
 
 export default function SignIn() {
   const { register, handleSubmit, formState } = useForm({
@@ -21,7 +21,7 @@ export default function SignIn() {
 
   const { errors } = formState;
 
-  const handleSingInHome: SubmitHandler<SignInForm> = async (values) => {
+  const handleSingInHome: SubmitHandler<SignInForm> = async (value) => {
     await new Promise(resolve => setTimeout(resolve, 2000))
   }
 
@@ -48,14 +48,14 @@ export default function SignIn() {
               type="email"
               name="email"
               label="E-mail"
-              error={errors.email}
+              errors={errors.email}
               {...register("email")} />
 
             <InputComponent
               type="password"
               name="password"
               label="Password"
-              error={errors.password}
+              errors={errors.password}
               {...register("password")} 
             />
           </Stack>

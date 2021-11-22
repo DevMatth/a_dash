@@ -10,7 +10,7 @@ import { Sidebar } from "../../components/Sidebar";
 import Link from "next/link"
 
 type CreateUserFormData = {
-    name: string,
+    name: String,
     email: String,
     password: String,
     password_confirmation: String,
@@ -58,7 +58,7 @@ export default function CreateUser() {
                                 name="name"
                                 label="Nome completo"
                                 error={errors.name}
-                                {...register('name')} 
+                                {...register('name')}  
                             />
                             
                             <InputComponent

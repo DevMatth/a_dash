@@ -5,13 +5,13 @@ import { forwardRef, ForwardRefRenderFunction } from 'react';
 interface InputProps extends ChakraInputProps {
     name: string;
     label?: string;
-    error?: FieldError;
+    errors?: FieldError;
 }
 
 const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> 
-  = ({ name, label, error= null, ...rest}, ref) => {
+  = ({ name, label, errors= null, ...rest}, ref) => {
     return (
-        <FormControl isInvalid={!!error}>
+        <FormControl isInvalid={!!errors}>
               { !!label && <FormLabel htmlFor={name}>{label}</FormLabel> }
               <ChakraInput
                 id={name}
@@ -27,9 +27,9 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps>
                 ref={ref}
                 {...rest}
               />
-              { !!error && (
+              { !!errors && (
                 <FormErrorMessage>
-                  {error.message}
+                  {errors.message}
                 </FormErrorMessage>
               )}
               </FormControl>
